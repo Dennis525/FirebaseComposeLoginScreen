@@ -1,8 +1,10 @@
 package com.example.firebasecomposeloginscreen
 
+import android.content.ContentValues.TAG
 import android.graphics.fonts.FontFamily
 import android.graphics.fonts.FontStyle
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -34,13 +36,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.firebasecomposeloginscreen.ui.theme.FirebaseComposeLoginScreenTheme
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
+    private val auth by lazy {
+        Firebase.auth
+    }
+    companion object{
+        val TAG : String = MainActivity::class.java.simpleName
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             FirebaseComposeLoginScreenTheme {
-                LoginScreen()
+                LoginScreen(auth)
 
             }
         }
@@ -48,7 +59,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(auth: FirebaseAuth) {
     val focusManager = LocalFocusManager.current
     var email by remember{
         mutableStateOf("")
@@ -145,7 +156,16 @@ fun LoginScreen() {
                     visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation()
                 )
 
-                Button(onClick = { /*TODO*/ },
+                Button(onClick = {
+                     auth.signInWithEmailAndPassword(email,password)
+                         .addOnCompleteListener{
+                             if (it.isSuccessful){
+                                 Log.d(TAG,"User has successfully logged in")
+                             } else{
+                                 Log.w(TAG,"User Failed to log in", it.exception)
+                             }
+                         }
+                },
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue),
                     enabled = isEmailValid && isPasswordValid
@@ -190,6 +210,6 @@ fun LoginScreen() {
 @Composable
 fun DefaultPreview() {
     FirebaseComposeLoginScreenTheme {
-        LoginScreen()
+        //LoginScreen(Firebase.auth)
     }
 }

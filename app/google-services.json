@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "17165856077",
+    "project_id": "fir-composeapp-1e14f",
+    "storage_bucket": "fir-composeapp-1e14f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17165856077:android:0175a0d1e0df3fc24f5b04",
+        "android_client_info": {
+          "package_name": "com.example.firebasecomposeloginscreen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17165856077-5c62od089c06dv9i1f9ugtnv3qkum64r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebasecomposeloginscreen",
+            "certificate_hash": "4aa6521243eba418b73fee3066ca9bcf23ab247e"
+          }
+        },
+        {
+          "client_id": "17165856077-61ee9bfogrh4e4rairb8d9gj87cba4bd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy_HOiCrRm-IMN7hT21otFpuI52IYptrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17165856077-61ee9bfogrh4e4rairb8d9gj87cba4bd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

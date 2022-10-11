@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -61,4 +62,13 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
 
     implementation "androidx.compose.material:material-icons-extended:1.2.1"
+
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+
+
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    implementation 'com.google.firebase:firebase-auth-ktx'
 }
